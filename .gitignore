@@ -1,0 +1,6 @@
+/data/app.log
+/data/data.db
+
+.pytest_cache
+venv
+.idea

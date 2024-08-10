@@ -1,0 +1,24 @@
+---
+    - name: Test Connection to {{base_url}}
+      ansible.builtin.uri:
+        url: "{{base_url}}"
+        method: GET
+        return_content: true
+      register: conection_test
+
+    - name: Getting data from {{base_url}}/{{endpoint}}
+      ansible.builtin.uri:
+        url: "{{base_url}}/{{endpoint}}"
+        method: GET
+        return_content: true
+      register: endpoint_data
+
+    - name: Print data
+      ansible.builtin.debug:
+        msg: "{{endpoint_data.content | from_json}}"
+
+    - name: Print output to file
+      ansible.builtin.copy:
+        content: "{{command_output.stdout}}"
+        dest: ./test_output.txt
+      delegate_to: localhost

@@ -1,9 +1,9 @@
 /data/app.log
 /data/data.db
+/data/output/*
 
 .pytest_cache
 venv
 .idea
-
 
 .localCredentials

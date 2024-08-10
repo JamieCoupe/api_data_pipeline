@@ -1,6 +1,6 @@
 # __init__.py
 
-from api_data_pipeline.logger import logger
+from python.api_data_pipeline import logger
 
 __all__ = [
     'API_URLS',

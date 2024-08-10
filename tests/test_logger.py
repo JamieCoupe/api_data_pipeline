@@ -5,9 +5,8 @@ import os
 # Assuming the module is in the parent directory of the 'tests' directory
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import api_data_pipeline
-from api_data_pipeline.config import LOGGING
-from api_data_pipeline.logger import logger
+from python.api_data_pipeline.config import LOGGING
+from python.api_data_pipeline import logger
 
 def test_logging_output():
     # Run a logging operation

@@ -4,3 +4,6 @@
 .pytest_cache
 venv
 .idea
+
+
+.localCredentials

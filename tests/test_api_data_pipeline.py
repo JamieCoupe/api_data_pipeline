@@ -6,8 +6,8 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Now import your module
-import api_data_pipeline
-from api_data_pipeline.logger import logger
+from python import api_data_pipeline
+from python.api_data_pipeline import logger
 
 
 def test_initialize_db():

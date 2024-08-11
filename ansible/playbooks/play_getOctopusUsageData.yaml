@@ -1,16 +1,9 @@
 ---
-- name: Get API Data
+- name: Get API Usage Data
   hosts: 127.0.0.1
   gather_facts: false
 
   tasks:
-    - name: Test Connection to {{ base_url }}
-      ansible.builtin.uri:
-        url: "{{ base_url }}"
-        method: GET
-        return_content: true
-      register: conection_test
-
     - name: Getting data from {{ base_url }}/{{ endpoint }}
       ansible.builtin.uri:
         url: "{{ base_url }}/{{ endpoint }}"
@@ -20,19 +13,19 @@
         return_content: true
       register: endpoint_data
 
-#    - name: Set content Data
-#      set_fact:
-#          return_data: "{{ endpoint_data.content | from_json }}"
+    - name: Set content Data
+      set_fact:
+          return_data: "{{ endpoint_data.json}}"
 
     - name: Print data
       ansible.builtin.debug:
-        msg: "{{ endpoint_data }}"
+        msg: "{{ return_data.results }}"
 
-#    - name: Save output to "{{ output_path }}"
-#      ansible.builtin.copy:
-#        content: "{{ return_data.results }}"
-#        dest: "{{ output_path }}"
-#        mode: "0775"
-#      delegate_to: localhost
+    - name: Save output to "{{ output_path }}"
+      ansible.builtin.copy:
+        content: "{{ return_data.results }}"
+        dest: "{{ output_path }}"
+        mode: "0775"
+      delegate_to: localhost
 
 # https://api.octopus.energy/v1/electricity-meter-points/1800028387039/meters/20E5125766/consumption/

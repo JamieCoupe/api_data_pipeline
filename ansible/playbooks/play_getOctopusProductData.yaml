@@ -27,9 +27,10 @@
         msg: "{{ return_data.results }}"
 
     - name: Save output to "{{ output_path }}"
-      ansible.builtin.copy:
-        content: "{{ return_data.results }}"
-        dest: "{{ output_path }}"
+      lineinfile:
+        line: "{{ return_data.results[0]| to_json }}"
+        path: "{{ output_path }}"
+        create: yes
         mode: "0775"
       delegate_to: localhost
 

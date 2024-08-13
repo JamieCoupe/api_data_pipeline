@@ -1,5 +1,10 @@
 import logging
-from .config import LOGGING
+import sys
+import os
+# Add the parent directory to the sys.path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from config import LOGGING
 
 # Create logger
 logger = logging.getLogger()

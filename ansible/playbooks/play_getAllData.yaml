@@ -1,0 +1,26 @@
+---
+- name: Get Generation Data
+  hosts: 127.0.0.1
+  gather_facts: false
+
+- import_playbook: play_getOctopusProductData.yaml
+  vars:
+    base_url: https://api.octopus.energy/v1/products
+    endpoint: OE-FIX-12M-24-08-07/electricity-tariffs/E-1R-OE-FIX-12M-24-08-07-N/standing-charges
+    output_path: /Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/electric_standing_charges.json
+- import_playbook: play_getOctopusProductData.yaml
+  vars:
+    base_url: https://api.octopus.energy/v1/products
+    endpoint: OE-FIX-12M-24-08-07/electricity-tariffs/E-1R-OE-FIX-12M-24-08-07-N/standard-unit-rates
+    output_path: /Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/electric_unit_rate.json
+- import_playbook: play_getOctopusProductData.yaml
+  vars:
+    base_url: https://api.octopus.energy/v1/products
+    endpoint: OE-FIX-12M-24-08-07/gas-tariffs/G-1R-OE-FIX-12M-24-08-07-N/standing-charges/
+    output_path: /Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/gas_standing_charges.json
+- import_playbook: play_getOctopusProductData.yaml
+  vars:
+    base_url: https://api.octopus.energy/v1/products
+    endpoint: OE-FIX-12M-24-08-07/gas-tariffs/G-1R-OE-FIX-12M-24-08-07-N/standard-unit-rates
+    output_path: /Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/gas_unit_rate.json
+- import_playbook: play_getGenerationData.yaml

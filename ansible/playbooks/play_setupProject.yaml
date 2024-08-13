@@ -16,4 +16,4 @@
         when: not db_file.stat.exists
 
       - name: Create DB tables
-        command: python3 -m "{{playbook_dir }}/../../python/api_data_pipeline/storage"
+        command: python3 {{playbook_dir }}/../../api_data_pipeline/storage.py

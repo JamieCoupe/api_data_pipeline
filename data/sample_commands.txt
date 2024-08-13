@@ -1,14 +1,15 @@
 # Electricity
 ## Standing charges
-ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/electricity-tariffs/E-1R-OE-FIX-12M-24-08-07-N/standing-charges data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/electric_standing_charges.txt"
+ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/electricity-tariffs/E-1R-OE-FIX-12M-24-08-07-N/standing-charges data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/electric_standing_charges.json"
 ## Daily unit charges
-ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/electricity-tariffs/E-1R-OE-FIX-12M-24-08-07-N/standard-unit-rates data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/electric_unit_rate.txt"
+ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/electricity-tariffs/E-1R-OE-FIX-12M-24-08-07-N/standard-unit-rates data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/electric_unit_rate.json"
 
 # Gas
 ## Standing charges
-ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/gas-tariffs/G-1R-OE-FIX-12M-24-08-07-N/standing-charges/ data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/gas_standing_charges.txt"
+ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/gas-tariffs/G-1R-OE-FIX-12M-24-08-07-N/standing-charges/ data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/gas_standing_charges.json"
 ## Daily unit charges
-ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/gas-tariffs/G-1R-OE-FIX-12M-24-08-07-N/standard-unit-rates/ data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/gas_unit_rate.txt"
+ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/products endpoint=OE-FIX-12M-24-08-07/gas-tariffs/G-1R-OE-FIX-12M-24-08-07-N/standard-unit-rates/ data_header=results output_path=/Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/gas_unit_rate.json"
 
 
-ansible-playbook ansible/playbooks/play_getOctopusProductData.yaml --connection=local -e "base_url=https://api.octopus.energy/v1/electricity-meter-points endpoint=1800028387039/meters/20E5125766/consumption/"
+# Ripple Generation Data
+ansible-playbook ansible/playbooks/play_getGenerationData.yaml --connection=local

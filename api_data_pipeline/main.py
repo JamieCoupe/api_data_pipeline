@@ -1,7 +1,13 @@
-from .fetch_data import fetch_data_from_api
-from .storage import initialize_db, store_data, cleanup_old_data
-from .config import API_URLS
-from .logger import logger
+import sys
+import os
+
+# Add the parent directory to the sys.path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from store_data import fetch_data_from_api
+#from storage import initialize_db, store_data, cleanup_old_data
+from config import API_URLS
+from logger import logger
 
 def main():
     # Initialize the database

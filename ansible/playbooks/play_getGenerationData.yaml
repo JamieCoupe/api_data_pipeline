@@ -1,29 +1,31 @@
 ---
-- name: Get API Usage Data
+- name: Get Generation Data
   hosts: 127.0.0.1
   gather_facts: false
+  vars:
+    output_path: /Users/jamiecoupe/PycharmProjects/api_data_pipeline/data/output/ripple_data.json
+    base_url: https://rippleenergy.com/rest/member_data
+    endpoint: S0dfRXxAdHGb7fDD:28EgpJmX_1RcaptO1kxIGnHezNmUxSW7QbCBOOlsJk4
 
   tasks:
     - name: Getting data from {{ base_url }}/{{ endpoint }}
       ansible.builtin.uri:
         url: "{{ base_url }}/{{ endpoint }}"
         method: GET
-        headers:
-          Authorization: "{{ api_key }}"
         return_content: true
       register: endpoint_data
 
     - name: Set content Data
       set_fact:
-          return_data: "{{ endpoint_data.json}}"
+          return_data: "{{ endpoint_data.json.generation_assets[0].generation.today }}"
 
     - name: Print data
       ansible.builtin.debug:
-        msg: "{{ return_data.results }}"
+        msg: "{{ return_data }}"
 
     - name: Save output to "{{ output_path }}"
       lineinfile:
-        line: "{{ return_data.results[0] | to_json(indent=4) }}"
+        line: "{{ return_data | to_json }}"
         path: "{{ output_path }}"
         create: yes
         mode: "0775"
